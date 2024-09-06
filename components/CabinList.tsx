@@ -5,7 +5,7 @@ export default async function CabinList({ filter }: { filter: string }) {
   const cabins = await getCabins();
 
   if (!cabins.length) return null;
-  let filteredCabins;
+  let filteredCabins: any[] = [];
 
   if (filter === "all") filteredCabins = cabins;
   if (filter === "small")
