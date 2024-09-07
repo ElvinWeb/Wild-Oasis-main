@@ -1,10 +1,10 @@
+import { auth } from "@/lib/auth";
 import { getBookedDatesByCabinId, getSettings } from "@/lib/data-service";
 import DateSelector from "./DateSelector";
-import ReservationForm from "./ReservationForm";
-import { auth } from "@/lib/auth";
 import LoginMessage from "./LoginMessage";
+import ReservationForm from "./ReservationForm";
 
-export default async function Reservations({ cabin }: { cabin: any }) {
+export default async function Reservation({ cabin }: { cabin: any }) {
   const [settings, bookedDates] = await Promise.all([
     getSettings(),
     getBookedDatesByCabinId(cabin.id),

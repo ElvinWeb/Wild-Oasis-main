@@ -1,6 +1,6 @@
 "use client";
 
-import { useReservation } from "./ReservationContext";
+import Image from "next/image";
 
 export default function ReservationForm({
   cabin,
@@ -17,11 +17,12 @@ export default function ReservationForm({
         <p>Logged in as</p>
 
         <div className="flex gap-4 items-center">
-          <img
+          <Image
             referrerPolicy="no-referrer"
-            className="h-8 rounded-full"
+            className="rounded-full"
             src={user.image}
             alt={user.name}
+            height={4}
           />
           <p>{user.name}</p>
         </div>
