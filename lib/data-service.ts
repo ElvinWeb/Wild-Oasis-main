@@ -37,7 +37,7 @@ export async function getCabinPrice(id: number) {
   return data;
 }
 
-export const getCabins = async function () {
+export async function getCabins() {
   const { data, error } = await supabase
     .from("cabins")
     .select("id, name, maxCapacity, regularPrice, discount, image")
@@ -49,7 +49,7 @@ export const getCabins = async function () {
   }
 
   return data;
-};
+}
 
 export async function getGuest(email: string) {
   const { data, error } = await supabase
@@ -58,7 +58,8 @@ export async function getGuest(email: string) {
     .eq("email", email)
     .single();
 
-  // No error here! We handle the possibility of no guest in the sign in callback
+  if (error) console.log(error);
+
   return data;
 }
 
@@ -152,7 +153,7 @@ export async function createGuest(newGuest: any) {
   const { data, error } = await supabase.from("guests").insert([newGuest]);
 
   if (error) {
-    console.error(error);
+    console.log(error);
     throw new Error("Guest could not be created");
   }
 
